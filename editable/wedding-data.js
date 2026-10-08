@@ -22,46 +22,46 @@ window.WEDDING_DATA = {
   hero: {
     kicker: "Together with our families",
     eyebrow: "Save the Date",
-    blessing: "Two souls, one destined lifetime",
+    blessing: "What began as friendship, culminates into forever",
   },
   story: {
     title: "The Two of Them",
-    subtitle: "A love story in four beautiful brushstrokes",
+    subtitle: "A love story in three brushstrokes",
     bride: {
       name: "Pankhuri",
       role: "The Bride",
-      text: "Deeply dedicated, sincere, and ambitious, she achieved her cherished dream of becoming a judge, posted in Faridabad. With 6 years at DU and 2 quiet years of intense devotion in Kanpur, she pours heart into everything. An emotional overthinker with an enduring passion for dance, she radiates grace, warmth, and quiet strength.",
+      text: "An ambitious heart with an overthinking mind and an enduring love for dance. She feels everything deeply, seeks joy in the quiet details, and laughs before the story has even begun.",
     },
     groom: {
       name: "Shashank",
       role: "The Groom",
-      text: "Grounded, extraordinarily patient, and calm, he is the most mature anchor and caring soul. Though the younger sibling, he possesses an instinctive ability to soothe every overthinking thought. An introvert who loves cooking and expresses love through quiet care, he stands steadfast by her side.",
+      text: "Quietly patient and wonderfully calm. An introvert who speaks through the warmth of good cooking and possesses an effortless gift for stilling an overthinking heart.",
     },
   },
   chapters: [
     {
       no: "I",
-      title: "Classmates & Quiet Paths",
+      title: "Quiet Corridors",
       when: "School Days",
-      text: "They were batchmates in school—connected through mutual friends yet sharing hardly a word. Unbeknownst to them, destiny had already laid the foundation for a lifetime.",
+      text: "Batchmates who never shared a word, quietly passing each other in the halls unaware of what the future held.",
     },
     {
       no: "II",
-      title: "When Paths Realigned",
-      when: "Friendship to Forever",
-      text: "Years later, their journeys crossed again. What began as comfortable conversations evolved into an irreplaceable bond, blossoming from deep friendship into unconditional love.",
+      title: "From Friendship to Forever",
+      when: "Paths Crossed",
+      text: "Years later, their worlds intertwined. What began as an easy friendship gently culminated into forever.",
     },
     {
       no: "III",
-      title: "The Riverside Promise & Roka",
-      when: "June · The Proposal",
-      text: "Framed by mountain breezes and river echoes, he went down on one knee asking her to be his forever. Fifteen days later, with their families' blessings, they were happily rokafied.",
+      title: "The Riverbank Promise",
+      when: "June",
+      text: "Beside the river and under an open sky, he asked. Fifteen days later, with happy hearts and family blessings, they were rokafied.",
     },
     {
       no: "IV",
-      title: "The Waited Year & The Vows",
-      when: "Now & Forever",
-      text: "He patiently waited through her demanding year of training at the judicial academy. Now, under the royal domes of Orchha, they step hand-in-hand into their forever.",
+      title: "The Royal Domes",
+      when: "Orchha",
+      text: "The palace gates open, the music turns golden, and the story waits for the people who made it all possible.",
     },
   ],
   events: [
@@ -88,8 +88,8 @@ window.WEDDING_DATA = {
     },
   ],
   footer: {
-    line1: "Come celebrate our joyous beginning.",
-    line2: "Dance, laugh & make memories with us.",
+    line1: "Come early. Stay late.",
+    line2: "Dance and celebrate with us.",
     signoff: "With all our love, Pankhuri & Shashank",
   },
   images: {
