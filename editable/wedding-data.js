@@ -4,7 +4,7 @@
  */
 
 window.WEDDING_DATA = {
-  hashtag: "#P.S I Love You",
+  hashtag: "#P.SILoveYou",
   couple: {
     bride: "Pankhuri",
     groom: "Shashank",
@@ -17,12 +17,12 @@ window.WEDDING_DATA = {
     name: "Raj Vilas The Palace",
     address: "Orchha, Madhya Pradesh",
     mapsQuery: "Raj Vilas The Palace Orchha",
-    mapsUrl: "https://maps.app.goo.gl/squvdfVUbmJtGpEo6",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Raj+Vilas+The+Palace+Orchha",
   },
   dressCode: "Haldi: Yellow Yellow Don't Be Mellow",
   hero: {
     kicker: "Together with our families",
-    eyebrow: "Save the Date",
+    eyebrow: "",
     blessing: "What began as friendship, culminates into forever",
   },
   story: {
