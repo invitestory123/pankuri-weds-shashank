@@ -103,6 +103,7 @@ window.WEDDING_DATA = {
   rsvp: {
     title: "RSVP",
     subtitle: "With warm regards & blessings, Shukla & Puri Families",
+    messageTemplate: "Namaste! We are so excited to confirm our attendance for Pankhuri and Shashank's wedding!\n\nHere are our details:\n* Names of Guests: \n* Total Number of People: \n* Expected Arrival (Date & Time): \n\n(Note: We are attaching our Aadhar cards to this chat for the hotel check-in as requested!)",
     contacts: [
       {
         name: "Pavitra Shukla",
@@ -123,9 +124,9 @@ window.WEDDING_DATA = {
     venue: "Raj Vilas The Palace · Orchha",
   },
   music: {
-    youtubeUrl: "https://music.youtube.com/watch?v=-2w18bd-ZQ4&si=JUN_PbIhjoZD8ek9",
-    videoId: "-2w18bd-ZQ4",
-    title: "Jashn-E-Bahaaraa (Instrumental - Flute)",
+    youtubeUrl: "https://music.youtube.com/watch?v=fWmYeaveS6o&si=OFZN3arIkX5B0nCb",
+    videoId: "fWmYeaveS6o",
+    title: "Preet Re",
   },
   footer: {
     line1: "Come early. Stay late.",

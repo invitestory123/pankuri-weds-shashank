@@ -283,70 +283,73 @@ function RsvpSection(){
       { name: "Gopal Shukla", relation: "Father", phone: "8573032301" }
     ]
   };
-  return (0,X.jsxs)(`section`,{
-    id: `rsvp`,
-    className: `relative overflow-hidden px-5 py-24`,
+  var defaultMsg = "Namaste! We are so excited to confirm our attendance for Pankhuri and Shashank's wedding!\n\nHere are our details:\n* Names of Guests: \n* Total Number of People: \n* Expected Arrival (Date & Time): \n\n(Note: We are attaching our Aadhar cards to this chat for the hotel check-in as requested!)";
+  var rsvpMsg = (rsvp && rsvp.messageTemplate) || defaultMsg;
+
+  return (0,X.jsxs)("section",{
+    id: "rsvp",
+    className: "relative overflow-hidden px-5 py-24",
     children: [
-      (0,X.jsx)(`div`,{
+      (0,X.jsx)("div",{
         "aria-hidden": !0,
-        className: `absolute inset-0 -z-10`,
-        style: { background: `linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--blush) 24%, var(--ivory)) 50%, var(--ivory) 100%)` }
+        className: "absolute inset-0 -z-10",
+        style: { background: "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--blush) 24%, var(--ivory)) 50%, var(--ivory) 100%)" }
       }),
-      (0,X.jsxs)(`div`,{
-        className: `mx-auto max-w-4xl text-center`,
+      (0,X.jsxs)("div",{
+        className: "mx-auto max-w-4xl text-center",
         children: [
           (0,X.jsx)(Ad, { eyebrow: rsvp.title || "RSVP", title: "We Look Forward to Having You" }),
           (0,X.jsx)(kd, { className: "mt-8" }),
-          (0,X.jsx)(`p`, {
-            className: `mx-auto mt-4 max-w-md font-script text-lg text-muted-foreground italic sm:text-xl`,
+          (0,X.jsx)("p", {
+            className: "mx-auto mt-4 max-w-md font-script text-lg text-muted-foreground italic sm:text-xl",
             children: rsvp.subtitle || "With warm regards & blessings, Shukla & Puri Families"
           }),
-          (0,X.jsx)(`div`, {
-            className: `mt-12 grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto`,
+          (0,X.jsx)("div", {
+            className: "mt-12 grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto",
             children: (rsvp.contacts || []).map(function(c, i){
               return (0,X.jsx)($,{
                 delay: i * 0.1,
                 children: (0,X.jsxs)(Z.div, {
                   whileHover: { y: -5 },
                   transition: { type: "spring", stiffness: 180, damping: 20 },
-                  className: `plate paper-grain h-full rounded-[1.8rem] p-6 text-center shadow-md border border-[color-mix(in_oklab,var(--gold)_25%,transparent)]`,
+                  className: "plate paper-grain h-full rounded-[1.8rem] p-6 text-center shadow-md border border-[color-mix(in_oklab,var(--gold)_25%,transparent)]",
                   children: [
-                    (0,X.jsx)(`div`,{
-                      className: `mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--gold)_16%,transparent)] text-gold-deep mb-3`,
+                    (0,X.jsx)("div",{
+                      className: "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--gold)_16%,transparent)] text-gold-deep mb-3",
                       children: (0,X.jsx)(phoneIcon, { size: 20, strokeWidth: 1.6 })
                     }),
-                    (0,X.jsx)(`p`,{
-                      className: `font-sans text-[0.62rem] tracking-[0.38em] text-gold-deep uppercase`,
+                    (0,X.jsx)("p",{
+                      className: "font-sans text-[0.62rem] tracking-[0.38em] text-gold-deep uppercase",
                       children: c.relation
                     }),
-                    (0,X.jsx)(`h3`,{
-                      className: `mt-1 font-display text-2xl text-primary font-semibold`,
+                    (0,X.jsx)("h3",{
+                      className: "mt-1 font-display text-2xl text-primary font-semibold",
                       children: c.name
                     }),
-                    (0,X.jsx)(`p`,{
-                      className: `mt-2 font-sans text-sm tracking-wider text-primary/80`,
+                    (0,X.jsx)("p",{
+                      className: "mt-2 font-sans text-sm tracking-wider text-primary/80",
                       children: "+91 " + c.phone
                     }),
-                    (0,X.jsxs)(`div`,{
-                      className: `mt-6 flex justify-center gap-3`,
+                    (0,X.jsxs)("div",{
+                      className: "mt-6 flex justify-center gap-3",
                       children: [
                         (0,X.jsxs)(Z.a,{
                           href: "tel:" + c.phone,
                           whileHover: { scale: 1.04 },
                           whileTap: { scale: 0.96 },
-                          className: `inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-sans text-[0.64rem] tracking-[0.22em] text-primary-foreground uppercase shadow`,
+                          className: "inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-sans text-[0.64rem] tracking-[0.22em] text-primary-foreground uppercase shadow",
                           children: [
                             (0,X.jsx)(phoneIcon, { size: 13, strokeWidth: 2 }),
                             "Call"
                           ]
                         }),
                         (0,X.jsxs)(Z.a,{
-                          href: "https://wa.me/91" + c.phone + "?text=" + encodeURIComponent("Hi " + c.name + ", congratulations! So happy for Pankhuri & Shashank's wedding!"),
+                          href: "https://wa.me/91" + c.phone + "?text=" + encodeURIComponent(rsvpMsg),
                           target: "_blank",
                           rel: "noreferrer",
                           whileHover: { scale: 1.04 },
                           whileTap: { scale: 0.96 },
-                          className: `glass-plate inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-sans text-[0.64rem] tracking-[0.22em] text-primary uppercase shadow`,
+                          className: "glass-plate inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-sans text-[0.64rem] tracking-[0.22em] text-primary uppercase shadow",
                           children: [
                             (0,X.jsx)(msgIcon, { size: 14, strokeWidth: 2 }),
                             "WhatsApp"
@@ -358,6 +361,34 @@ function RsvpSection(){
                 })
               }, c.name);
             })
+          }),
+          (0,X.jsxs)("div",{
+            className: "mt-10 mx-auto max-w-xl plate paper-grain rounded-2xl p-5 text-left border border-[color-mix(in_oklab,var(--gold)_25%,transparent)] shadow-sm",
+            children: [
+              (0,X.jsx)("p",{
+                className: "font-sans text-[0.62rem] tracking-[0.3em] text-gold-deep uppercase font-bold text-center sm:text-left",
+                children: "Hotel Check-in & Attendance RSVP"
+              }),
+              (0,X.jsxs)("p",{
+                className: "mt-2.5 font-display text-sm text-primary/85 leading-relaxed",
+                children: [
+                  "Please tap ",
+                  (0,X.jsx)("strong", { children: "WhatsApp" }),
+                  " above to share your details for hotel check-in:",
+                  (0,X.jsx)("br",{}),
+                  "• Names of Guests",
+                  (0,X.jsx)("br",{}),
+                  "• Total Number of People",
+                  (0,X.jsx)("br",{}),
+                  "• Expected Arrival (Date & Time)",
+                  (0,X.jsx)("br",{}),
+                  (0,X.jsx)("span",{
+                    className: "italic text-xs text-muted-foreground",
+                    children: "(Kindly attach Aadhar cards in WhatsApp for hotel check-in)"
+                  })
+                ]
+              })
+            ]
           })
         ]
       })
@@ -368,7 +399,7 @@ function RsvpSection(){
 function MusicPlayer(){
   var [isPlaying, setIsPlaying] = s.useState(false);
   var playerRef = s.useRef(null);
-  var videoId = (o.music && o.music.videoId) || "-2w18bd-ZQ4";
+  var videoId = (o.music && o.music.videoId) || "fWmYeaveS6o";
 
   s.useEffect(function(){
     if (typeof window === 'undefined') return;
@@ -488,7 +519,7 @@ function MusicPlayer(){
           }),
           (0,X.jsx)(`span`,{
             className: `font-semibold text-primary/90 hidden sm:inline`,
-            children: isPlaying ? `Jashn-E-Bahaaraa` : `Play Music`
+            children: isPlaying ? ((o.music && o.music.title) || "Preet Re") : "Play Music"
           }),
           (0,X.jsx)(`span`,{
             className: `font-semibold text-primary/90 sm:hidden`,
