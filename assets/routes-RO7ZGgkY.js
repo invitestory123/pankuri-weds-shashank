@@ -20,43 +20,68 @@ function ScratchCardSection(){
     var cvs = canvasRef.current;
     if (!cvs) return;
     var rect = cvs.getBoundingClientRect();
+    var width = (rect.width && rect.width > 50) ? rect.width : (cvs.parentElement ? cvs.parentElement.clientWidth : 380) || 380;
+    var height = (rect.height && rect.height > 50) ? rect.height : (cvs.parentElement ? cvs.parentElement.clientHeight : 240) || 240;
     var dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
-    cvs.width = rect.width * dpr;
-    cvs.height = rect.height * dpr;
+    cvs.width = width * dpr;
+    cvs.height = height * dpr;
     var ctx = cvs.getContext("2d");
     ctx.scale(dpr, dpr);
 
-    var grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+    // Golden metallic foil
+    var grad = ctx.createLinearGradient(0, 0, width, height);
     grad.addColorStop(0, "#d4af37");
-    grad.addColorStop(0.25, "#f6e27a");
-    grad.addColorStop(0.5, "#cb9b28");
+    grad.addColorStop(0.2, "#f6e27a");
+    grad.addColorStop(0.45, "#cb9b28");
     grad.addColorStop(0.75, "#edd775");
     grad.addColorStop(1, "#996515");
     ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, rect.width, rect.height);
+    ctx.fillRect(0, 0, width, height);
 
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-    for (var i = 0; i < 40; i++) {
-      var rx = (Math.sin(i * 99) * 0.5 + 0.5) * rect.width;
-      var ry = (Math.cos(i * 33) * 0.5 + 0.5) * rect.height;
+    // Decorative inner borders
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.55)";
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(10, 10, width - 20, height - 20);
+
+    ctx.strokeStyle = "rgba(100, 70, 20, 0.25)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(14, 14, width - 28, height - 28);
+
+    // Gold sparkle dust
+    ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
+    for (var i = 0; i < 45; i++) {
+      var rx = (Math.sin(i * 99 + 1) * 0.5 + 0.5) * (width - 40) + 20;
+      var ry = (Math.cos(i * 33 + 2) * 0.5 + 0.5) * (height - 40) + 20;
       ctx.beginPath();
-      ctx.arc(rx, ry, 1.2, 0, Math.PI * 2);
+      ctx.arc(rx, ry, (i % 3 === 0 ? 1.8 : 1.1), 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(6, 6, rect.width - 12, rect.height - 12);
+    // Central circular seal
+    var cx = width / 2;
+    var cy = height / 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy - 10, 36, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.65)";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
 
+    // Monogram
     ctx.fillStyle = "#3e2c0e";
-    ctx.font = "bold 13px Cinzel, serif, sans-serif";
+    ctx.font = "italic 20px 'Playfair Display', Georgia, serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("✨ SCRATCH TO REVEAL ✨", rect.width / 2, rect.height / 2 - 8);
+    ctx.fillText("P & S", cx, cy - 10);
+
+    // Instruction text
+    ctx.font = "bold 13px Cinzel, serif, sans-serif";
+    ctx.fillText("✨ SCRATCH TO REVEAL ✨", cx, cy + 42);
 
     ctx.font = "italic 11px sans-serif";
     ctx.fillStyle = "#5c4115";
-    ctx.fillText("Swipe with your finger or mouse", rect.width / 2, rect.height / 2 + 14);
+    ctx.fillText("Swipe with your finger or mouse", cx, cy + 62);
   }, []);
 
   s.useEffect(function(){
@@ -97,80 +122,111 @@ function ScratchCardSection(){
     ctx.scale(dpr, dpr);
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x, y, 26, 0, Math.PI * 2);
+    ctx.arc(x, y, 28, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
     checkPercentage();
   };
 
-  return (0,X.jsxs)(`section`,{
-    id: `date-reveal`,
-    className: `relative overflow-hidden px-5 py-20`,
+  return (0,X.jsxs)("section",{
+    id: "date-reveal",
+    className: "relative overflow-hidden px-5 py-20",
     children: [
-      (0,X.jsx)(`div`,{
+      (0,X.jsx)("div",{
         "aria-hidden": !0,
-        className: `absolute inset-0 -z-10`,
-        style: { background: `linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--peach) 20%, var(--ivory)) 50%, var(--ivory) 100%)` }
+        className: "absolute inset-0 -z-10",
+        style: { background: "linear-gradient(180deg, var(--ivory) 0%, color-mix(in oklab, var(--peach) 20%, var(--ivory)) 50%, var(--ivory) 100%)" }
       }),
-      (0,X.jsxs)(`div`,{
-        className: `mx-auto max-w-xl text-center`,
+      (0,X.jsxs)("div",{
+        className: "mx-auto max-w-xl text-center",
         children: [
           (0,X.jsx)(Ad, { eyebrow: "Date Reveal", title: "Save Our Special Dates" }),
-          (0,X.jsx)(`p`,{
-            className: `mx-auto mt-3 max-w-md font-script text-lg text-muted-foreground italic sm:text-xl`,
+          (0,X.jsx)("p",{
+            className: "mx-auto mt-3 max-w-md font-script text-lg text-muted-foreground italic sm:text-xl",
             children: "Scratch away the golden seal to unveil our wedding days"
           }),
-          (0,X.jsx)(`div`,{
-            className: `mt-8 flex justify-center`,
-            children: (0,X.jsxs)(`div`,{
-              className: `plate paper-grain relative mx-auto w-full max-w-[360px] sm:max-w-[400px] h-[230px] rounded-[2rem] overflow-hidden p-1 shadow-2xl border border-[color-mix(in_oklab,var(--gold)_45%,transparent)]`,
+          (0,X.jsx)("div",{
+            className: "mt-8 flex justify-center",
+            children: (0,X.jsxs)("div",{
+              className: "plate paper-grain relative mx-auto rounded-[2rem] overflow-hidden p-1 shadow-2xl",
+              style: {
+                position: "relative",
+                width: "100%",
+                maxWidth: "380px",
+                height: "240px",
+                minHeight: "240px",
+                margin: "0 auto",
+                borderRadius: "1.8rem",
+                overflow: "hidden",
+                border: "1px solid color-mix(in oklab, var(--gold) 45%, transparent)"
+              },
               children: [
-                (0,X.jsxs)(`div`,{
-                  className: `absolute inset-0 flex flex-col items-center justify-center p-6 text-center select-none bg-gradient-to-b from-[#fdfbf7] via-[#fffbf2] to-[#f9eedc]`,
+                (0,X.jsxs)("div",{
+                  className: "absolute inset-0 flex flex-col items-center justify-center p-6 text-center select-none",
+                  style: {
+                    position: "absolute",
+                    inset: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "1.5rem",
+                    textAlign: "center",
+                    userSelect: "none",
+                    background: "linear-gradient(180deg, #fffdfa 0%, #fffbf2 50%, #f9eedc 100%)"
+                  },
                   children: [
-                    (0,X.jsx)(`span`,{ className: `font-script text-3xl text-gold-deep italic`, children: o.couple ? o.couple.initials : `P & S` }),
-                    (0,X.jsx)(`p`,{ className: `mt-1 font-sans text-[0.62rem] tracking-[0.4em] text-gold-deep uppercase font-bold`, children: `Save The Date` }),
-                    (0,X.jsx)(`h3`,{ className: `mt-2 font-display text-2xl sm:text-3xl text-primary font-bold drop-shadow-sm`, children: (o.scratchCard && o.scratchCard.date) || `23rd & 24th Nov 2026` }),
-                    (0,X.jsx)(`p`,{ className: `mt-2 font-display text-sm tracking-wide text-primary/85`, children: (o.scratchCard && o.scratchCard.venue) || `Raj Vilas The Palace · Orchha` }),
-                    (0,X.jsx)(`p`,{ className: `mt-2 font-script text-base text-gold-deep italic`, children: (o.couple ? o.couple.bride + " & " + o.couple.groom : `Pankhuri & Shashank`) })
+                    (0,X.jsx)("span",{ className: "font-script text-3xl text-gold-deep italic", children: o.couple ? o.couple.initials : "P & S" }),
+                    (0,X.jsx)("p",{ className: "mt-1 font-sans text-[0.62rem] tracking-[0.4em] text-gold-deep uppercase font-bold", children: "Save The Date" }),
+                    (0,X.jsx)("h3",{ className: "mt-2 font-display text-2xl sm:text-3xl text-primary font-bold drop-shadow-sm", children: (o.scratchCard && o.scratchCard.date) || "23rd & 24th Nov 2026" }),
+                    (0,X.jsx)("p",{ className: "mt-2 font-display text-sm tracking-wide text-primary/85", children: (o.scratchCard && o.scratchCard.venue) || "Raj Vilas The Palace · Orchha" }),
+                    (0,X.jsx)("p",{ className: "mt-2 font-script text-base text-gold-deep italic", children: (o.couple ? o.couple.bride + " & " + o.couple.groom : "Pankhuri & Shashank") })
                   ]
                 }),
-                (0,X.jsx)(`canvas`,{
+                (0,X.jsx)("canvas",{
                   ref: canvasRef,
                   onPointerDown: function(e){ isDrawing.current = true; scratchAt(e); },
                   onPointerMove: function(e){ if (isDrawing.current) scratchAt(e); },
                   onPointerUp: function(){ isDrawing.current = false; },
                   onPointerLeave: function(){ isDrawing.current = false; },
                   style: {
-                    touchAction: `none`,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    touchAction: "none",
                     opacity: revealed ? 0 : 1,
-                    pointerEvents: revealed ? `none` : `auto`,
-                    transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1)`
+                    pointerEvents: revealed ? "none" : "auto",
+                    transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+                    cursor: "pointer",
+                    zIndex: 10,
+                    borderRadius: "1.8rem"
                   },
-                  className: `absolute inset-0 w-full h-full cursor-pointer z-10 rounded-[2rem]`
+                  className: "rounded-[1.8rem]"
                 })
               ]
             })
           }),
-          (0,X.jsx)(`div`,{
-            className: `mt-6 flex justify-center gap-3`,
+          (0,X.jsx)("div",{
+            className: "mt-6 flex justify-center gap-3",
             children: revealed ? (
               (0,X.jsx)(Z.button,{
-                type: `button`,
+                type: "button",
                 onClick: function(){ setRevealed(false); initCanvas(); },
                 whileHover: { scale: 1.04 },
                 whileTap: { scale: 0.96 },
-                className: `glass-plate inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-[0.62rem] tracking-[0.26em] text-primary uppercase shadow`,
-                children: `↺ Scratch Again`
+                className: "glass-plate inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-[0.62rem] tracking-[0.26em] text-primary uppercase shadow",
+                children: "↺ Scratch Again"
               })
             ) : (
               (0,X.jsx)(Z.button,{
-                type: `button`,
+                type: "button",
                 onClick: function(){ setRevealed(true); },
                 whileHover: { scale: 1.04 },
                 whileTap: { scale: 0.96 },
-                className: `glass-plate inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-[0.62rem] tracking-[0.26em] text-primary uppercase shadow`,
-                children: `✨ Tap to Reveal Date`
+                className: "glass-plate inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-sans text-[0.62rem] tracking-[0.26em] text-primary uppercase shadow",
+                children: "✨ Tap to Reveal Date"
               })
             )
           })
