@@ -4,6 +4,7 @@
  */
 
 window.WEDDING_DATA = {
+  hashtag: "#P.S I Love You",
   couple: {
     bride: "Pankhuri",
     groom: "Shashank",
