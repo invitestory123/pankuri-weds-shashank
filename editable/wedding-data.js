@@ -21,6 +21,7 @@ window.WEDDING_DATA = {
   },
   dressCode: "Haldi: Yellow Yellow Don't Be Mellow",
   hero: {
+    ganeshPraise: "|| SHREE GANESHAYA NAMAH ||",
     kicker: "Together with our families",
     eyebrow: "",
     blessing: "What began as friendship, culminates into forever",
@@ -31,11 +32,13 @@ window.WEDDING_DATA = {
     bride: {
       name: "Pankhuri",
       role: "The Bride",
+      parents: "(Daughter of Smt Manisha and Shri Gopal Krishna Shukla)",
       text: "An ambitious heart with an overthinking mind and an enduring love for dance. She feels everything deeply, seeks joy in the quiet details, and laughs before the story has even begun.",
     },
     groom: {
       name: "Shashank",
       role: "The Groom",
+      parents: "(Son of Mr. Neeraj Puri & Late Mrs. Seema Puri)",
       text: "Quietly patient and wonderfully calm. An introvert who speaks through the warmth of good cooking and possesses an effortless gift for stilling an overthinking heart.",
     },
   },
@@ -102,7 +105,7 @@ window.WEDDING_DATA = {
   ],
   rsvp: {
     title: "RSVP",
-    subtitle: "With warm regards & blessings, Shukla & Puri Families",
+    subtitle: "With warm regards and blessings from\nMrs. Manisha & Mr. Gopal Krishna Shukla\nMrs. Shambhavi Awasthi & Mr. Pavitra Shukla",
     messageTemplate: "Namaste! We are so excited to confirm our attendance for Pankhuri and Shashank's wedding!\n\nHere are our details:\n* Names of Guests: \n* Total Number of People: \n* Expected Arrival (Date & Time): \n\n(Note: We are attaching our Aadhar cards to this chat for the hotel check-in as requested!)",
     contacts: [
       {
